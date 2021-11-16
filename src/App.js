@@ -1,19 +1,18 @@
-import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './Home';
+import Login from './Login';
+import Profile from './Profile';
 
-function App() {
+export default function App() {
 	return (
 		<>
 			<Router>
-				<Link to="/">Home</Link>
-				<Link to="/login">Login</Link>
-				<Link to="/profile">Profile</Link>
-
 				<Routes>
-					<Route path="/login" element={<div>Login?</div>} />
+					<Route path="/" element={<Home />} />
+					<Route path="/login" element={<Login />} />
+					<Route path="/profile" element={<Profile />} />
 				</Routes>
 			</Router>
 		</>
 	);
 }
-
-export default App;
