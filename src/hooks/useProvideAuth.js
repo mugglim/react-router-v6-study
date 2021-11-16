@@ -29,7 +29,8 @@ export default function AuthProvider() {
 
 	const handleLogout = done => {
 		localStorage.removeItem('accessToken');
-		return done;
+		setUser(null);
+		done();
 	};
 
 	return { user, handleLogin, handleLogout, handleIsAccessTokenExpire };
