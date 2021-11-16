@@ -9,7 +9,10 @@ export default function AuthProvider() {
 	};
 
 	const handleIsAccessTokenExpire = () => {
-		const accessTokenExpireTime = localStorage.getItem('accessToken');
+		const accessTokenExpireTime = parseInt(localStorage.getItem('accessToken'));
+
+		if (!accessTokenExpireTime) return true;
+
 		return Date.now() - accessTokenExpireTime > 0;
 	};
 
@@ -26,7 +29,7 @@ export default function AuthProvider() {
 
 	const handleLogout = done => {
 		localStorage.removeItem('accessToken');
-		done();
+		return done;
 	};
 
 	return { user, handleLogin, handleLogout, handleIsAccessTokenExpire };
