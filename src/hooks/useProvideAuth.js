@@ -8,6 +8,11 @@ export default function AuthProvider() {
 		return DB[userName] && password === DB[userName].password;
 	};
 
+	const handleIsAccessTokenExpire = () => {
+		const accessTokenExpireTime = localStorage.getItem('accessToken');
+		return Date.now() - accessTokenExpireTime > 0;
+	};
+
 	const handleLogin = ({ userName, password }, done) => {
 		const isLoginValidation = handleLoginValidation({ userName, password });
 		if (isLoginValidation) {
@@ -24,5 +29,5 @@ export default function AuthProvider() {
 		done();
 	};
 
-	return { user, handleLogin, handleLogout };
+	return { user, handleLogin, handleLogout, handleIsAccessTokenExpire };
 }
