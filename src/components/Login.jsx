@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useAuth from './hooks/useAuth';
+import useAuth from '../hooks/useAuth';
 
 export default function Login() {
 	const navigate = useNavigate();
-	const { user, handleLogin } = useAuth();
+	const { handleLogin } = useAuth();
 
 	const userNameRef = useRef();
 	const passwordRef = useRef();
